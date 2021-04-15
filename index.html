@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <title>Letsee WebApp: Hello World</title>
-  
-  <!-- Replace the app key here with your own app key -->
-  <script src="https://developer.letsee.io/api/webar?key=your_app_key"></script>
-  
-  <!-- Adding configuration .JSON file. -->
-  <style media="place" type="text/css">
-    #container {
-      -letsee-target: uri('letsee-marker.json');
-      width: 260px;
-      height: 160px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Letsee WebAR Demo</title>
+    
+    <!-- Adding Letsee WebAR SDK -->
+    <script src="https://cdn.letsee.io/webar/letsee-0.9.18.min.js"></script>
+    
+    <!-- Adding configuration .JSON file.
+		1. The .JSON file MUST BE in the same folder hierarchy
+		with your .html and planar image target.
+		2. media="place" is required. -->
+    <style media="place" type="text/css">
+        #container {
+            -letsee-target: uri('letsee-marker.json');
+        }
+    </style>
 </head>
 <body>
 
-<!-- The id of this div tag MUST be the same with id defined in media="place" style. -->
-<div id="container">
-  <h1>Hello World</h1>
-</div>
+    <!-- The id of this div tag MUST be the same with id defined in media="place" style. -->
+    <div id="container">
+        <h2 style="color: white">Hello, world!</h2>
+    </div>
 
-<!-- Loading the Letsee WebAR Engine -->
-<script type="application/javascript">
-  
-  letsee.ready(() => {
-    letsee.start();
-  });
-  letsee.init();
-
-</script>
+    <!-- Loading the Letsee WebAR Engine -->
+    <script>
+        const config = {
+            "appKey": "YOUR_APP_KEY",   // Replace the app key here with your own app key
+            "trackerType": "IMAGE",     // For planar image tracking, trackerType should be IMAGE
+        };
+        const letsee = new Letsee(config);
+    </script>
 </body>
 </html>
